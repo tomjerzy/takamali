@@ -1,0 +1,66 @@
+const controller = require('./controllers/Controller');
+const isAuthenticated = require('./policies/isAuthenticated')
+const authPolicy = require('./policies/authPolicy')
+module.exports = (app) => {
+	app.post('/register',
+		authPolicy.register,
+		controller.register)
+	app.post('/confirm_email',
+		controller.confirmEmail)
+	app.post('/create_stock',
+		controller.createStock)
+	app.post('/fetch_stock',
+		controller.fetchStock)
+	app.post('/edit_stock',
+		controller.editStock)
+	app.post('/like_stock',
+		controller.likeStock)
+	app.post('/unlike_stock',
+		controller.unlikeStock)
+	app.get('/delete_stock/:id',
+		controller.deleteStock)
+	app.post('/create_review',
+		controller.createReview)
+	app.post('/remove_review',
+		controller.removeReview)
+	app.post('/fetch_reviews',
+		controller.fetchReviews)
+	app.get('/fetch_items/:offset',
+		controller.fetchItems)
+	app.post('/login',
+		controller.login)
+	app.get('/fetch_user/:id',
+		controller.fetchUser)
+	app.post('/fetch_notifications',
+		controller.fetchNotifications)
+	app.get('/fetch_item/:id',
+		controller.fetchItem)
+	app.post('/follow',
+		controller.follow)
+	app.post('/unfollow',
+		controller.unfollow)
+	app.get('/fetch_followers/:id',
+		controller.fetchFollowers)
+	app.get('/fetch_likes/:id',
+		controller.fetchLikes)
+	app.get('/fetch_fav/:id',
+		controller.fetchFav)
+	app.post('/update_profile',
+		controller.updateProfile)
+	app.get('/search_user',
+		controller.searchUser)
+	app.post('/send_message',
+		controller.sendMessage)
+	app.get('/fetch_conversations/:id',
+		controller.fetchConversations)
+	app.post('/fetch_messages',
+		controller.fetchMessages)
+	app.get('/delete_messages/:id',
+		controller.deleteMessage)
+	app.get('/fetch_county_stock/:county/:offset',
+		controller.fetchCountyStock)
+	app.post('/create_info',
+		controller.createInfo)
+	app.get('/delete_inq/:id',
+		controller.deleteInq)
+}
